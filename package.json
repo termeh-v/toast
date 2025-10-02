@@ -5,17 +5,17 @@
     "name": "@termeh-v/toast",
     "description": "Modern toast for Vue 3.",
     "sideEffects": false,
-    "sass": "./dist/style.scss",
-    "style": "./dist/style.scss",
     "module": "./dist/toast.es.js",
     "main": "./dist/toast.cjs.js",
     "types": "./dist/toast.d.ts",
+    "style": "./dist/style.scss",
+    "sass": "./dist/style.scss",
     "exports": {
         ".": {
             "sass": "./dist/style.scss",
+            "types": "./dist/toast.d.ts",
             "import": "./dist/toast.es.js",
-            "require": "./dist/toast.cjs.js",
-            "types": "./dist/toast.d.ts"
+            "require": "./dist/toast.cjs.js"
         }
     },
     "files": [
@@ -41,18 +41,19 @@
         "prepare": "npm run build"
     },
     "devDependencies": {
-        "@types/node": "^24.5.2",
+        "@types/node": "^24.6.2",
         "@vitejs/plugin-vue": "^6.0.1",
-        "typescript": "^5.9.2",
-        "vite": "^7.1.7",
+        "typescript": "^5.9.3",
+        "vite": "^7.1.8",
         "vite-plugin-dts": "^4.5.4",
-        "vite-plugin-static-copy": "^3.1.2",
+        "vite-plugin-static-copy": "^3.1.3",
         "vitest": "^3.2.4"
     },
     "peerDependencies": {
-        "@termeh-v/composables": "^1.0.0",
-        "@termeh-v/utils": "^1.0.1",
-        "motion": "^12.23.19",
+        "@termeh-v/composables": "^1.0.4",
+        "@termeh-v/utils": "^1.0.2",
+        "mitt": "^3.0.1",
+        "motion": "^12.23.22",
         "nanoid": "^5.1.6",
         "termeh": "^1.0.0",
         "unplugin-vue-components": "^29.1.0",
