@@ -2,20 +2,22 @@ import { mergeConfig, type DeepPartial } from "@termeh-v/utils";
 import { type ContainerOption } from "./types";
 
 /**
- * Default configuration options for the toast container.
+ * The globally shared default container options.
+ *
+ * Consumers may override parts of this object via `setDefaultOptions`.
  */
 let defaultOptions: ContainerOption = {
     duration: 5,
-    pauseOnHover: true,
+    closable: true,
     direction: "ltr",
     animations: {
         enter: {
-            params: { opacity: [0, 1], translateX: ["25%", 0] },
+            params: { opacity: [0, 1], translateX: ["-50%", 0] },
             options: { duration: 0.2, type: "spring", stiffness: 150 },
         },
         leave: {
-            params: { opacity: [1, 0], translateX: [0, "25%"] },
-            options: { duration: 0.1, ease: "easeOut" },
+            params: { opacity: [1, 0], translateX: [0, "-50%"] },
+            options: { duration: 0.2, ease: "easeOut" },
         },
         stackEnter: {
             params: { opacity: [0.85, 1], translateY: ["3rem", 0] },
@@ -23,16 +25,33 @@ let defaultOptions: ContainerOption = {
         },
         stackLeave: {
             params: { opacity: [1, 0], translateY: [0, "3rem"] },
+            options: { duration: 0.2, ease: "easeOut" },
+        },
+        activate: {
+            params: { top: 0, bottom: 0, scale: 1, opacity: 1 },
+            options: { duration: 0.1, ease: "easeOut" },
+        },
+        secondary: {
+            params: { top: -4, bottom: "3rem", scale: 0.9, opacity: 0.65 },
+            options: { duration: 0.1, type: "spring", stiffness: 150 },
+        },
+        tertiary: {
+            params: { top: -8, bottom: "3rem", scale: 0.8, opacity: 0.65 },
+            options: { duration: 0.1, type: "spring", stiffness: 150 },
+        },
+        hide: {
+            params: { top: 0, bottom: "3rem", scale: 0.7, opacity: 0.65 },
             options: { duration: 0.1, ease: "easeOut" },
         },
     },
 };
 
 /**
- * Updates the global default options.
- * Performs a deep merge with the existing options.
+ * Merge partial options into the global defaults. The merge is deep and
+ * respects the provided replace map to ensure animation params/options are
+ * replaced rather than shallow-merged.
  *
- * @param option - Partial options to override the current defaults.
+ * @param option - Partial container options to apply as defaults.
  */
 export function setDefaultOptions(option: DeepPartial<ContainerOption>) {
     defaultOptions = mergeConfig(defaultOptions, option, {
@@ -56,9 +75,9 @@ export function setDefaultOptions(option: DeepPartial<ContainerOption>) {
 }
 
 /**
- * Retrieves the current default container options.
+ * Retrieve the current global default container options.
  *
- * @returns The current default options.
+ * @returns The current `ContainerOption` used as defaults.
  */
 export function getDefaultOptions(): ContainerOption {
     return defaultOptions;

@@ -1,0 +1,48 @@
+@use "termeh";
+@use "./styles/container";
+@use "./styles/toast";
+
+/**
+ * Public mixin: use-toast
+ *
+ * Include this mixin to add toast styles and optional color variants.
+ *
+ * @mixin use-toast($colors: null)
+ * @param {List|null} $colors - Optional list of theme color names to generate color variants.
+ *
+ * Tokens read from the theme (override to customize):
+ * @termeh {Color} [#090e23] - var("toast", "background") -> toast background color
+ * @termeh {Color} [white] - var("toast", "foreground") -> toast foreground color
+ * @termeh {String|CSS} [none] - var("toast", "shadow") -> toast box-shadow
+ * @termeh {String|CSS} [none] - var("toast", "backdrop-filter") -> toast backdrop-filter
+ * @termeh {Length} - var("toast", "radius") -> toast corner radius
+ * @termeh {Length} [2px] - var("toast", "progress-size") -> progress bar height
+ * @termeh {Length} [25rem] - var("toast", "width") -> toast container width
+ * @termeh {Color} - var("toast", "overlay-background") -> mobile overlay background
+ * @termeh {Number} [1] - var("toast", "overlay-opacity") -> mobile overlay opacity
+ * @termeh {String|CSS} [none] - var("toast", "overlay-filter") -> mobile overlay backdrop-filter
+ * @termeh {Color} - var("toast", "action-background") -> action button background
+ * @termeh {Color} - var("toast", "action-foreground") -> action button foreground
+ * @termeh {Color} - var("toast", "simple-action-background") -> simple action background
+ * @termeh {Color} - var("toast", "simple-action-foreground") -> simple action foreground
+ * @termeh {Length} [8px] - var("gap", "micro") -> small spacing unit
+ * @termeh {Length} [1.6rem] - var("gap", "macro") -> macro spacing unit
+ * @termeh {Length} [1.6em] - var("line-height", "normal") -> base line-height
+ * @termeh {Length} [2px] - var("decorator", "size") -> decorator thickness
+ * @termeh {Length} - var("radius", "normal") -> base radius token
+ * @termeh {Number} [100] - var("z-index", "toast") -> z-index of toast dimmer
+ * @termeh {Color} - termeh.variant("primary", "light") -> fallback action background
+ * @termeh {Color} - termeh.variant("primary", "readable") -> fallback action foreground
+ * @termeh {Color} - termeh.variant("primary", "foreground") -> primary readable foreground
+ * @termeh {Color} - termeh.variant("shade", "light") -> fallback simple action background
+ * @termeh {Color} - termeh.variant("shade", "readable") -> fallback simple action foreground
+ * @termeh {Color} - termeh.color("primary") -> primary brand color
+ */
+@mixin use-toast($colors: null) {
+    @if not termeh.module-presented("toast") {
+        @include termeh.require("toast", "icon");
+        @include termeh.present-module("toast");
+        @include container.use();
+        @include toast.use($colors);
+    }
+}
