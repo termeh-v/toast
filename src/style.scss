@@ -10,33 +10,44 @@
  * @mixin use-toast($colors: null)
  * @param {List|null} $colors - Optional list of theme color names to generate color variants.
  *
- * Tokens read from the theme (override to customize):
- * @termeh {Color} [#090e23] - var("toast", "background") -> toast background color
- * @termeh {Color} [white] - var("toast", "foreground") -> toast foreground color
+ * Termeh tokens used by use-toast (short, human-friendly):
+ *
+ * @termeh {Length} [25rem] - var("toast", "width") -> default width for the toast dimmer/container
+ * @termeh {Number} [100] - var("z-index", "toast") -> z-index for the toast dimmer/overlay
+ *
+ * @termeh {Length} [unspecified] - var("radius", "normal") -> base corner radius for toasts and actions
+ * @termeh {Length} [8px] - var("gap", "micro") -> small spacing for action gaps and item spacing
+ * @termeh {Length} [1.6rem] - var("gap", "macro") -> macro spacing for container padding and toast horizontal padding
+ * @termeh {Length} [1.6em] - var("line-height", "normal") -> baseline line-height for text and icons
+ * @termeh {Length} [2px] - var("decorator", "size") -> loader / progress thickness
+ *
+ * @termeh {Color} [#090e23] - var("toast", "background") -> toast panel background
+ * @termeh {Color} [white] - var("toast", "foreground") -> default text and icon color inside toasts
  * @termeh {String|CSS} [none] - var("toast", "shadow") -> toast box-shadow
- * @termeh {String|CSS} [none] - var("toast", "backdrop-filter") -> toast backdrop-filter
- * @termeh {Length} - var("toast", "radius") -> toast corner radius
- * @termeh {Length} [2px] - var("toast", "progress-size") -> progress bar height
- * @termeh {Length} [25rem] - var("toast", "width") -> toast container width
- * @termeh {Color} - var("toast", "overlay-background") -> mobile overlay background
+ * @termeh {String|CSS} [none] - var("toast", "backdrop-filter") -> optional backdrop-filter on the toast
+ * @termeh {Length} [var("radius","normal")] - var("toast", "radius") -> toast-specific radius (falls back to base radius)
+ * @termeh {Length} [var("decorator","size")] - var("toast", "progress-size") -> height of the progress bar
+ *
+ * @termeh {Color} [unspecified] - color("primary") -> brand primary color used for icons and accents
+ * @termeh {Color} [unspecified] - variant("primary", "foreground") -> readable foreground for primary actions
+ * @termeh {Color} [unspecified] - variant("primary", "light") -> fallback action background
+ * @termeh {Color} [unspecified] - variant("primary", "readable") -> fallback action foreground
+ * @termeh {Color} [unspecified] - variant("shade", "light") -> fallback simple action background
+ * @termeh {Color} [unspecified] - variant("shade", "readable") -> fallback simple action foreground
+ *
+ * @termeh {Color} [unspecified] - var("overlay", "background") -> overlay color fallback for mobile full-screen toasts
+ * @termeh {Number} [1] - var("overlay", "opacity") -> overlay opacity fallback for mobile
+ * @termeh {String|CSS} [none] - var("overlay", "filter") -> overlay backdrop-filter fallback for mobile
+ *
+ * @termeh {Color} [unspecified] - var("toast", "overlay-background") -> mobile overlay background
  * @termeh {Number} [1] - var("toast", "overlay-opacity") -> mobile overlay opacity
  * @termeh {String|CSS} [none] - var("toast", "overlay-filter") -> mobile overlay backdrop-filter
- * @termeh {Color} - var("toast", "action-background") -> action button background
- * @termeh {Color} - var("toast", "action-foreground") -> action button foreground
- * @termeh {Color} - var("toast", "simple-action-background") -> simple action background
- * @termeh {Color} - var("toast", "simple-action-foreground") -> simple action foreground
- * @termeh {Length} [8px] - var("gap", "micro") -> small spacing unit
- * @termeh {Length} [1.6rem] - var("gap", "macro") -> macro spacing unit
- * @termeh {Length} [1.6em] - var("line-height", "normal") -> base line-height
- * @termeh {Length} [2px] - var("decorator", "size") -> decorator thickness
- * @termeh {Length} - var("radius", "normal") -> base radius token
- * @termeh {Number} [100] - var("z-index", "toast") -> z-index of toast dimmer
- * @termeh {Color} - termeh.variant("primary", "light") -> fallback action background
- * @termeh {Color} - termeh.variant("primary", "readable") -> fallback action foreground
- * @termeh {Color} - termeh.variant("primary", "foreground") -> primary readable foreground
- * @termeh {Color} - termeh.variant("shade", "light") -> fallback simple action background
- * @termeh {Color} - termeh.variant("shade", "readable") -> fallback simple action foreground
- * @termeh {Color} - termeh.color("primary") -> primary brand color
+ *
+ * @termeh {Color} [variant("primary","light")] - var("toast", "action-background") -> action button background in the action bar
+ * @termeh {Color} [variant("primary","readable")] - var("toast", "action-foreground") -> action button foreground color
+ * @termeh {Color} [variant("shade","light")] - var("toast", "simple-action-background") -> simple/clear action background
+ * @termeh {Color} [variant("shade","readable")] - var("toast", "simple-action-foreground") -> simple/clear action foreground
+ *
  */
 @mixin use-toast($colors: null) {
     @if not termeh.module-presented("toast") {

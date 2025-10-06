@@ -39,8 +39,8 @@ export function useCreate(rootEl: TemplateRef) {
     const animator = useAnimator(
         rootEl,
         closing,
-        computed(() => isCollapsed.value && index.value < count.value - 3),
         isCollapsed,
+        computed(() => isCollapsed.value && index.value < count.value - 3),
         animations
     );
 
@@ -256,8 +256,8 @@ export function useCreate(rootEl: TemplateRef) {
 function useAnimator(
     element: TemplateRef,
     isClosing: MaybeRefOrGetter<boolean>,
-    isHidden: MaybeRefOrGetter<boolean>,
     isCollapsed: MaybeRefOrGetter<boolean>,
+    isHidden: MaybeRefOrGetter<boolean>,
     animations: MaybeRefOrGetter<ToastAnimations | undefined>
 ) {
     const unrefEl = () => toValue(element) as HTMLElement;

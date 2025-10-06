@@ -52,10 +52,10 @@ export interface ToastAnimations {
     leave: Animation;
     stackEnter: Animation;
     stackLeave: Animation;
-    activate?: Animation;
-    secondary?: Animation;
-    tertiary?: Animation;
-    hide?: Animation;
+    activate: Animation;
+    secondary: Animation;
+    tertiary: Animation;
+    hide: Animation;
 }
 
 /**
@@ -107,6 +107,3 @@ export type EmitterEvent = {
     removing: string;
     [key: string]: ToastState;
 };
-
-/** Keys of core emitter events. */
-export type ToastCoreEvent = keyof EmitterEvent;

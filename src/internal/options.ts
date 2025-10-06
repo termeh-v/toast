@@ -32,15 +32,15 @@ let defaultOptions: ContainerOption = {
             options: { duration: 0.1, ease: "easeOut" },
         },
         secondary: {
-            params: { top: -4, bottom: "3rem", scale: 0.9, opacity: 0.65 },
+            params: { top: -4, bottom: "2rem", scale: 0.9, opacity: 0.65 },
             options: { duration: 0.1, type: "spring", stiffness: 150 },
         },
         tertiary: {
-            params: { top: -8, bottom: "3rem", scale: 0.8, opacity: 0.65 },
+            params: { top: -8, bottom: "2rem", scale: 0.8, opacity: 0.65 },
             options: { duration: 0.1, type: "spring", stiffness: 150 },
         },
         hide: {
-            params: { top: 0, bottom: "3rem", scale: 0.7, opacity: 0.65 },
+            params: { top: 0, bottom: "2rem", scale: 0.7, opacity: 0.65 },
             options: { duration: 0.1, ease: "easeOut" },
         },
     },

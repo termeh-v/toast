@@ -19,6 +19,7 @@
     $gap-micro: termeh.var("gap", "micro", 8px);
     $gap-macro: termeh.var("gap", "macro", 1.6rem);
     $line-height: termeh.var("line-height", "normal", 1.6em);
+    $strong-weight: termeh.var("strong", "weight", bold);
 
     $primary: termeh.color("primary");
     $primary-readable: color.mix($foreground, $primary, 50%);
@@ -51,7 +52,7 @@
                 flex-direction: row;
                 align-items: flex-start;
                 gap: 1em;
-                padding: 1em;
+                padding: 1em $gap-macro;
 
                 .toast-icon {
                     flex: none;
@@ -59,7 +60,7 @@
                     align-items: center;
                     justify-content: center;
                     vertical-align: middle;
-                    width: $line-height;
+                    width: 1em;
                     height: $line-height;
                     color: $primary-readable;
 
@@ -74,7 +75,7 @@
 
                     h6 {
                         font-size: 1em;
-                        font-weight: 500;
+                        font-weight: $strong-weight;
                         line-height: $line-height;
                         @include termeh.marged() {
                             margin-bottom: $gap-micro;
@@ -95,7 +96,7 @@
                 align-items: center;
                 justify-content: flex-end;
                 gap: $gap-micro;
-                padding: 1em;
+                padding: 1em $gap-macro;
 
                 .toast-action {
                     @include termeh.control();
