@@ -3,14 +3,12 @@
 @use "./styles/toast";
 
 /**
- * Public mixin: use-toast
+ * @mixin use-toast
+ * @param {List|null} $colors [null]
  *
  * Include this mixin to add toast styles and optional color variants.
  *
- * @mixin use-toast($colors: null)
- * @param {List|null} $colors - Optional list of theme color names to generate color variants.
- *
- * Termeh tokens used by use-toast (short, human-friendly):
+ * Termeh tokens used by use-modal:
  *
  * @termeh {Length} [25rem] - var("toast", "width") -> default width for the toast dimmer/container
  * @termeh {Number} [100] - var("z-index", "toast") -> z-index for the toast dimmer/overlay
