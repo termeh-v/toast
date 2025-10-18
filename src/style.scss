@@ -50,8 +50,8 @@
 @mixin use-toast($colors: null) {
     @if not termeh.module-presented("toast") {
         @include termeh.require("toast", "icon");
-        @include termeh.present-module("toast");
         @include container.use();
         @include toast.use($colors);
+        @include termeh.present-module("toast");
     }
 }

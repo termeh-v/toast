@@ -54,131 +54,133 @@
     $gap-macro: termeh.var("gap", "macro", 1.6rem);
     $line-height: termeh.var("line-height", "normal", 1.6em);
 
-    .toast-dimmer {
-        display: flex;
-        align-items: stretch;
-        flex-direction: column;
-        box-sizing: border-box;
-        gap: $gap-micro;
-        position: fixed;
-        overflow: visible;
-        width: $width;
-        max-width: 100%;
-        max-height: 100%;
-        padding: $gap-macro;
-        z-index: $z-index;
-        @include termeh.transition(all);
-
-        @include termeh.is-ltr() {
-            top: 0;
-            right: 0;
-            bottom: auto;
-            left: auto;
-        }
-
-        @include termeh.is-rtl() {
-            top: 0;
-            left: 0;
-            bottom: auto;
-            right: auto;
-        }
-
-        .toast-action-bar {
+    @at-root {
+        .toast-dimmer {
             display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: flex-end;
-            box-sizing: border-box;
-            gap: $gap-micro;
-            margin-bottom: $gap-micro;
-            @include termeh.transition(all);
-
-            button {
-                @include termeh.control();
-                flex: none;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                cursor: pointer;
-                font-size: 0.9em;
-                font-weight: 500;
-                border-radius: $radius;
-                padding: termeh.inline-padding();
-                color: $action-foreground;
-                background-color: $action-background;
-                @include termeh.transition(all);
-
-                &:hover {
-                    transform: scale(1.05);
-                }
-
-                &.is-clear {
-                    color: $simple-foreground;
-                    background: $simple-background;
-                }
-            }
-        }
-
-        .toast-container {
-            display: flex;
-            flex-direction: column-reverse;
             align-items: stretch;
-            gap: $gap-micro;
-            position: relative;
+            flex-direction: column;
             box-sizing: border-box;
+            gap: $gap-micro;
+            position: fixed;
+            overflow: visible;
+            width: $width;
+            max-width: 100%;
+            max-height: 100%;
+            padding: $gap-macro;
+            z-index: $z-index;
             @include termeh.transition(all);
 
-            &-leave-active {
-                position: absolute;
+            @include termeh.is-ltr() {
+                top: 0;
+                right: 0;
+                bottom: auto;
+                left: auto;
             }
-        }
 
-        .toast-collapser {
-            inset: 0;
-            display: block;
-            position: absolute;
-        }
-
-        @include termeh.mobile() {
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            overflow-y: auto;
-            background: rgba($overlay-background, $overlay-opacity);
-            backdrop-filter: $overlay-filter;
-        }
-
-        &.is-collapsed {
-            cursor: pointer;
-
-            &:hover {
-                transform: scale(1.05);
+            @include termeh.is-rtl() {
+                top: 0;
+                left: 0;
+                bottom: auto;
+                right: auto;
             }
 
             .toast-action-bar {
-                opacity: 0;
-                margin-bottom: -1rem;
-                transform: translateY(100%);
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: flex-end;
+                box-sizing: border-box;
+                gap: $gap-micro;
+                margin-bottom: $gap-micro;
+                @include termeh.transition(all);
+
+                button {
+                    @include termeh.control();
+                    flex: none;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    cursor: pointer;
+                    font-size: 0.9em;
+                    font-weight: 500;
+                    border-radius: $radius;
+                    padding: termeh.inline-padding();
+                    color: $action-foreground;
+                    background-color: $action-background;
+                    @include termeh.transition(all);
+
+                    &:hover {
+                        transform: scale(1.05);
+                    }
+
+                    &.is-clear {
+                        color: $simple-foreground;
+                        background: $simple-background;
+                    }
+                }
             }
 
             .toast-container {
-                gap: 0;
+                display: flex;
+                flex-direction: column-reverse;
+                align-items: stretch;
+                gap: $gap-micro;
+                position: relative;
+                box-sizing: border-box;
+                @include termeh.transition(all);
+
+                &-leave-active {
+                    position: absolute;
+                }
+            }
+
+            .toast-collapser {
+                inset: 0;
+                display: block;
+                position: absolute;
             }
 
             @include termeh.mobile() {
                 top: 0;
                 left: 0;
-                bottom: auto;
-                right: auto;
-                height: auto;
-                overflow-x: visible;
-                overflow-y: visible;
-                background: none;
-                backdrop-filter: none;
+                bottom: 0;
+                right: 0;
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+                overflow-y: auto;
+                background: rgba($overlay-background, $overlay-opacity);
+                backdrop-filter: $overlay-filter;
+            }
+
+            &.is-collapsed {
+                cursor: pointer;
+
+                &:hover {
+                    transform: scale(1.05);
+                }
+
+                .toast-action-bar {
+                    opacity: 0;
+                    margin-bottom: -1rem;
+                    transform: translateY(100%);
+                }
+
+                .toast-container {
+                    gap: 0;
+                }
+
+                @include termeh.mobile() {
+                    top: 0;
+                    left: 0;
+                    bottom: auto;
+                    right: auto;
+                    height: auto;
+                    overflow-x: visible;
+                    overflow-y: visible;
+                    background: none;
+                    backdrop-filter: none;
+                }
             }
         }
     }
